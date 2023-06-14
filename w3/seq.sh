@@ -1,13 +1,34 @@
 #!/usr/bin/sh
 
 # check arguments are numbers
-if [ "$1" -eq "$1" ]
+if [ "$1" -eq "$1" ] 2>/dev/null
 then
-    echo "first is a number!"
+    echo "first  arg is a number!"
 else
     echo "first arg isnt a number :("
     exit
 fi
+
+#alternative number check (without using else)
+if ! [ "$1" -eq "$1" ] 2> /dev/null
+then
+    echo "first arg isnt a number!"
+    exit 1
+fi
+
+# note the following doesnt work
+# if  [ ! "$1" -eq "$1" ]
+#     echo "first arg isnt a number :("
+#     exit 1
+# fi
+
+# if [ "$1" -ne "$1" ]
+# then
+#     echo "first  arg isnt a number!"
+#     exit 1
+# fi
+
+
 
 #TODO: check the others are numbers too!
 
