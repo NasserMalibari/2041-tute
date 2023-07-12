@@ -7,7 +7,8 @@ import sys
 # len(sys.argv) not in [2,3]
 
 # beware: many assumptions are made:
-# if 2 args are given, assumes -n is valid first arg
+# ex: if 2 args are given, checks first argument is 
+# of the form '-n' but doesnt check if n is an integer!
 
 
 def head(filename, n_lines):
@@ -31,6 +32,8 @@ if (len(sys.argv) == 3):
     if (sys.argv[1][0] == '-'):
         n_lines = int(sys.argv[1][1:])
         head(sys.argv[2], n_lines)
+    else:
+        raise Exception("first argument should start with -")
 
 # f = open('filename')
 
